@@ -1,31 +1,31 @@
-Project Name: DaoCheng platform
+#Project Name: DaoCheng platform
 
-Description:
+##Description:
 
 Daocheng will be a Financial markets trading platform with multi assets coverage from front to back, aiming to be the choice of platform for China Financial institutions.
 
-Assets coverage:
+##Assets coverage:
 
-  FX:
+  * FX:
     Spot/Forward/Swap/Vannilla Option
-  Rates:
+  * Rates:
     Loan/Deposits/IRS
-  Securities:
+  * Securities:
     Bond/Repo
 
-Functional Coverage:
+##Functional Coverage:
   
-  Trading:
+  * Trading:
     Trade Capture, Trade pricing, Pre-Deal Check 
-  Risk Management:
+  * Risk Management:
     Market Risk, Credit Risk, Liquidity Risk
-  Finance:
+  * Finance:
     Accounting
-  Operations:
+  * Operations:
     Validation, Confirmation, Settlement
 
-Non Functional Coverage:
+##Non Functional Coverage:
 
-  High throughput/ Low latency
-  Scalability
-  Easy extensibility 
+  * High throughput/ Low latency
+  * Scalability
+  * Easy extensibility 
