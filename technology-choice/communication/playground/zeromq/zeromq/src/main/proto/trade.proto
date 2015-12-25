@@ -1,0 +1,20 @@
+package com.daocheng.core.model;
+
+option java_package = "com.daocheng.core.model";
+
+
+message Contract {
+   required string instrument = 1;
+   required int32 notional = 2;
+}
+
+message Transaction {
+   required Contract contract = 1;
+   required string counterparty = 2;
+}
+
+message Portfolio {
+   repeated Transaction transaction = 1;
+   required string name = 2;
+}
+

@@ -1,0 +1,19 @@
+# Install of zmq and it's java binding.
+
+jzmq.jar depends on  libzmq (C implementation) and libjzmq (Java Binding with dynamic library file)
+
+libzmq install failed with following error:
+***** error: Package requirements (libsodium) were not met:.
+ 
+workaround-> install sodium first:
+  https://download.libsodium.org/libsodium/releases/ -> working
+  
+Run the program:
+
+   -Djava.library.path=/usr/local/lib
+ 
+***** Even with both libjzmq and libzmq built and installed in /usr/local/lib, the program can still not been running.
+
+
+Fallback plan:
+ -> use jeromq (Java native implementation of zeromq)
