@@ -1,0 +1,7 @@
+# some useful links on the persistence part
+http://www.dineshonjava.com/p/cacheing-in-hibernate-first-level-and.html
+http://docs.hazelcast.org/docs/latest/manual/html/map-persistence.html
+
+# Next action point:
+
+->Write the customized DataStore to H2 DB -> Finished

@@ -1,0 +1,5 @@
+# ready some docs to compare with redis and memcached and hazelcast.
+
+# redis and memecached need seperate hosting server, which might not prefered.
+
+# will do the evaluation later. 
