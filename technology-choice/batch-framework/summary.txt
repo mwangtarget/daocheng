@@ -1,0 +1,1 @@
+1. Spring got too much annonations, which got the code very much like someone who never be a programmer.
