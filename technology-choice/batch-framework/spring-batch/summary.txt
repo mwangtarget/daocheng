@@ -1,0 +1,10 @@
+1. too many spring xml
+
+----
+
+To run the H2 Admin
+
+mwang@mwang-ThinkPad-R400:~$ cd /home/mwang/.m2/repository/com/h2database/h2/1.4.190/
+mwang@mwang-ThinkPad-R400:~/.m2/repository/com/h2database/h2/1.4.190$ java -jar h2-1.4.190.jar 
+
+h2 file location: ~/batch_spring
