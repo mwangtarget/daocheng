@@ -1,0 +1,4 @@
+http://www.ibm.com/developerworks/java/library/j-ts1/index.html
+http://www.ibm.com/developerworks/java/library/j-ts2/index.html
+
+Book: Principles of transaction processing
