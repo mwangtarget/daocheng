@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<!-- Initialise the database before every test case: -->
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="${batch.business.schema.script}" />
+	</jdbc:initialize-database>
+
+	<jdbc:initialize-database data-source="dataSource2">
+		<jdbc:script location="${batch.business.schema.script.second}" />
+	</jdbc:initialize-database>
+
+	<bean id="dataSource" class="org.h2.jdbcx.JdbcDataSource">
+		<property name="url" value="${batch.jdbc.url}" />
+		<property name="user" value="${batch.jdbc.user}" />
+		<property name="password" value="${batch.jdbc.password}" />
+	</bean>
+	<!-- HSQL doesn't support XA, so this will be H2 still -->
+	<bean id="dataSource2" class="org.h2.jdbcx.JdbcDataSource">
+		<property name="url" value="${batch.jdbc.url.second}" />
+		<property name="user" value="${batch.jdbc.user.second}" />
+		<property name="password" value="${batch.jdbc.password.second}" />
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="jdbcTemplate2" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource2"></property>
+	</bean>
+
+	<bean id="dataSourceXA" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+
+		<property name="uniqueResourceName" value="DataSourceXAH2" />
+		<property name="xaDataSource" ref="dataSource" />
+		<property name="poolSize" value="3" />
+
+	</bean>
+
+	<bean id="dataSourceXA2" class="com.atomikos.jdbc.AtomikosDataSourceBean"
+		init-method="init" destroy-method="close">
+
+		<property name="uniqueResourceName" value="DataSourceXA2" />
+		<property name="xaDataSource" ref="dataSource2" />
+		<property name="poolSize" value="3" />
+
+	</bean>
+
+	<!-- Optional: add a log administrator -->
+	<bean id="localLogAdministrator" class="com.atomikos.icatch.admin.imp.LocalLogAdministrator" />
+
+	<bean id="userTransactionService" class="com.atomikos.icatch.config.UserTransactionServiceImp"
+		init-method="init" destroy-method="shutdownForce">
+		<constructor-arg>
+			<!-- IMPORTANT: specify all Atomikos properties here -->
+			<props>
+				<prop key="com.atomikos.icatch.service">
+					com.atomikos.icatch.standalone.UserTransactionServiceFactory
+				</prop>
+			</props>
+		</constructor-arg>
+		<property name="initialLogAdministrators">
+			<list>
+				<ref bean="localLogAdministrator" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Construct Atomikos UserTransactionManager, needed to configure Spring -->
+	<bean id="AtomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager"
+		init-method="init" destroy-method="close" depends-on="userTransactionService">
+
+		<!-- IMPORTANT: disable startup because the userTransactionService above 
+			does this -->
+		<property name="startupTransactionService" value="false" />
+
+		<!-- when close is called, should we force transactions to terminate or 
+			not? -->
+		<property name="forceShutdown" value="false" />
+	</bean>
+
+	<!-- Also use Atomikos UserTransactionImp, needed to configure Spring -->
+	<bean id="AtomikosUserTransaction" class="com.atomikos.icatch.jta.UserTransactionImp"
+		depends-on="userTransactionService">
+		<property name="transactionTimeout" value="300" />
+	</bean>
+
+	<!-- Configure the Spring framework to use JTA transactions from Atomikos -->
+	<bean id="JtaTransactionManager"
+		class="org.springframework.transaction.jta.JtaTransactionManager"
+		depends-on="userTransactionService">
+		<property name="transactionManager" ref="AtomikosTransactionManager" />
+		<property name="userTransaction" ref="AtomikosUserTransaction" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<tx:jta-transaction-manager />
+</beans>

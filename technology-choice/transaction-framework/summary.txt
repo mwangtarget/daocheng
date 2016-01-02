@@ -1,4 +1,6 @@
 http://www.ibm.com/developerworks/java/library/j-ts1/index.html
 http://www.ibm.com/developerworks/java/library/j-ts2/index.html
-
+http://spring.io/blog/2011/08/15/configuring-spring-and-jta-without-full-java-ee/
+http://www.atomikos.com/Documentation/SpringIntegration
+http://www.atomikos.com/Documentation/HibernateThreeStandalone
 Book: Principles of transaction processing

@@ -11,6 +11,10 @@
 		<jdbc:script location="${batch.business.schema.script}" />
 	</jdbc:initialize-database>
 
+	<jdbc:initialize-database data-source="dataSourceHSQL">
+		<jdbc:script location="${batch.business.schema.script.hsql}" />
+	</jdbc:initialize-database>
+
 	<!--bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" 
 		destroy-method="close"> <property name="driverClassName" value="${batch.jdbc.driver}" 
 		/> <property name="url" value="${batch.jdbc.url}" /> <property name="username" 
@@ -18,7 +22,7 @@
 		/> <property name="maxActive" value="${batch.jdbc.pool.size}"/> <property 
 		name="validationQuery" value="${batch.jdbc.validationQuery}"/> <property 
 		name="testWhileIdle" value="${batch.jdbc.testWhileIdle}"/> </bean -->
-		
+
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${batch.jdbc.driver}" />
@@ -28,17 +32,26 @@
 		<property name="password" value="${batch.jdbc.password}" />
 	</bean>
 
+	<bean id="dataSourceHSQL"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${batch.jdbc.driver.hsql}" />
+
+		<property name="url" value="${batch.jdbc.url.hsql}" />
+		<property name="username" value="${batch.jdbc.user.hsql}" />
+		<property name="password" value="${batch.jdbc.password.hsql}" />
+	</bean>
+
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
+
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 		lazy-init="true">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<!-- Enable Transaction annotation driven -->
-	<tx:annotation-driven />
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 
 </beans>
