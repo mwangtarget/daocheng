@@ -1,0 +1,4 @@
+authorization and authentication
+https://www.owasp.org/index.php/Java_Security_Frameworks
+Apache Shiro: authorization/authentication/cryptography/session management
+http://shiro.apache.org/webapp-tutorial.html

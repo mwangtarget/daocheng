@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+	xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+	typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+	targetNamespace="http://activiti.org/bpmn20" id="definitions">
+	<process id="ticketRequest" name="Ticket Request" isExecutable="true">
+		
+		<startEvent id="request" activiti:initiator="assigneeName">
+			<extensionElements>
+				<activiti:formProperty id="ticketId" name="Ticket ID"
+					type="string" required="true"></activiti:formProperty>
+			</extensionElements>
+		</startEvent>
+		<sequenceFlow id="flow1" sourceRef="request" targetRef="handleRequest"></sequenceFlow>
+		<userTask id="handleRequest" name="Handle ticket request"
+			activiti:candidateGroups="management">
+			<documentation>Ticket ${ticketId} is waiting for approval, submitted
+				by ${assigneeName}.</documentation>
+			<extensionElements>
+				<activiti:formProperty id="ticketApproved"
+					name="Do you approve this ticket" type="enum" required="true">
+				</activiti:formProperty>
+				<activiti:formProperty id="managerMotivation"
+					name="Motivation" type="string"></activiti:formProperty>
+				
+			<activiti:taskListener class="com.daocheng.technology_choose.workflow.actitivi.ApprovalListener" event="complete"></activiti:taskListener>		
+			
+			</extensionElements>
+		</userTask>
+		<sequenceFlow id="flow2" sourceRef="handleRequest"
+			targetRef="requestApprovedDecision">
+		</sequenceFlow>
+		<exclusiveGateway id="requestApprovedDecision" name="Request approved?"></exclusiveGateway>
+		<sequenceFlow id="flow3" sourceRef="requestApprovedDecision"
+			targetRef="theEnd1">
+			<conditionExpression xsi:type="tFormalExpression"><![CDATA[${ticketApproved == 'true'}]]></conditionExpression>
+		</sequenceFlow>
+		<endEvent id="theEnd1"></endEvent>
+		<sequenceFlow id="flow5" sourceRef="requestApprovedDecision"
+			targetRef="adjustTicketRequestTask">
+			<conditionExpression xsi:type="tFormalExpression"><![CDATA[${ticketApproved == 'false'}]]></conditionExpression>
+		</sequenceFlow>
+		<userTask id="adjustTicketRequestTask" name="Adjust ticket request"
+			activiti:assignee="${assigneeName}">
+			<documentation>Your manager has disapproved your ticket request for
+				ticket ${ticketId}.
+				Reason: ${managerMotivation}
+			</documentation>
+			<extensionElements>
+				<activiti:formProperty id="ticketId" name="Ticket ID"
+					type="string" required="true"></activiti:formProperty>
+			</extensionElements>
+		</userTask>
+		<sequenceFlow id="flow6" sourceRef="adjustTicketRequestTask"
+			targetRef="resendRequestDecision"></sequenceFlow>
+		<exclusiveGateway id="resendRequestDecision" name="Resend request?"></exclusiveGateway>
+		<sequenceFlow id="flow7" sourceRef="resendRequestDecision"
+			targetRef="handleRequest">
+			<conditionExpression xsi:type="tFormalExpression"><![CDATA[${resendRequest == 'true'}]]></conditionExpression>
+		</sequenceFlow>
+		<sequenceFlow id="flow8" sourceRef="resendRequestDecision"
+			targetRef="theEnd2">
+			<conditionExpression xsi:type="tFormalExpression"><![CDATA[${resendRequest == 'false'}]]></conditionExpression>
+		</sequenceFlow>
+		<endEvent id="theEnd2"></endEvent>
+	</process>
+</definitions>

@@ -1,0 +1,4 @@
+possible choices:
+JBPM, Activiti, Bonitasoft
+
+Evaluation activiti first
