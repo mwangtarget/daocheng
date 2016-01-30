@@ -1,0 +1,8 @@
+Useful Link:
+
+http://martinfowler.com/bliki/RulesEngine.html
+http://www.oracle.com/technetwork/articles/javase/javarule-139829.html
+
+Examples of rule engines:
+
+Drools, Fair Isaac Blaze Advisor, ILOG JRules, Jess
