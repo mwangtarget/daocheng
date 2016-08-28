@@ -45,20 +45,20 @@
     <url>https://github.com/OpenGamma/Strata</url>
   </scm>
   
-  <repositories>
+  <!-- repositories>
     <repository>
       <id>og-public</id>
       <name>OG Public</name>
       <url>http://maven.opengamma.com/nexus/content/groups/public</url>
     </repository>
-  </repositories>
-  <pluginRepositories>
+  </repositories-->
+  <!-- pluginRepositories>
     <pluginRepository>
       <id>og-public</id>
       <name>OG Public</name>
       <url>http://maven.opengamma.com/nexus/content/groups/public</url>
     </pluginRepository>
-  </pluginRepositories>
+  </pluginRepositories-->
 
   <!-- ==================================================================== -->
   <modules>
@@ -170,7 +170,7 @@
         </executions>
       </plugin>
       <!-- Block bad APIs -->
-      <plugin>
+      <!--  plugin>
         <groupId>de.thetaphi</groupId>
         <artifactId>forbiddenapis</artifactId>
         <version>2.0</version>
@@ -190,7 +190,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin-->
     </plugins>
   </build>
 
@@ -363,11 +363,11 @@
 
   <!-- ==================================================================== -->
   <distributionManagement>
-    <repository>
+    <!-- repository>
       <id>og-public-release</id>
       <name>OpenGamma public maven repository</name>
       <url>${og-public-release.url}</url>
-    </repository>
+    </repository-->
   </distributionManagement>
 
   <!-- ==================================================================== -->

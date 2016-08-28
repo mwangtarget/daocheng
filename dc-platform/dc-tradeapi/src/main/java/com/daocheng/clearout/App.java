@@ -16,9 +16,6 @@ import org.joda.beans.Bean;
 import org.joda.beans.integrate.mongo.BeanMongoDBObject;
 import org.joda.beans.ser.JodaBeanSer;
 
-import com.daocheng.transaction.book.BookInfo;
-import com.daocheng.transaction.party.PartyInfo;
-import com.daocheng.transaction.user.UserInfo;
 import com.google.common.collect.ImmutableMap;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
@@ -40,10 +37,12 @@ import com.opengamma.strata.product.fx.FxSingleTrade;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Test Entry program");
-		saveTransaction();
+//		saveTransaction();
 	}
 
-	public static void saveTransaction() {
+	/**
+	 * public static void saveTransaction() {
+	 
 
 		MongoClient mongoClient = new MongoClient("localhost", 27017);
 		DB db = mongoClient.getDB("dc-transaction");
@@ -88,7 +87,7 @@ public class App {
 
 		Transaction fxTransactionOriginal = JodaBeanSer.PRETTY.jsonReader()
 				.read(JodaBeanSer.PRETTY.jsonWriter().write(fxTransaction), Transaction.class);
-		fxTransactionOriginal.getBookInfo();
+
 		
 		// Sample for test TradeAttributeType Usage
 		TradeInfo tradeInfoTest = TradeInfo.builder().id(StandardId.of("example", "1"))
@@ -148,5 +147,6 @@ public class App {
 		}
 		return dbDoc;
 	}
+	*/
 	// TODO Read back the Json data back to JodaBean
 }

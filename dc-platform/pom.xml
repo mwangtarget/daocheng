@@ -22,6 +22,10 @@
 		<mockito.version>1.10.19</mockito.version>
 		<junit.version>4.12</junit.version>
 		<mongodb.driver.version>3.3.0</mongodb.driver.version>
+		<spark.version>2.5</spark.version>
+		<restlet-version>2.3.7</restlet-version>
+		<spring-boot-version>1.4.0.RELEASE</spring-boot-version>
+		<spring-version>4.3.2.RELEASE</spring-version>
 	</properties>
 
 	<!--Sub-Modules -->
@@ -30,16 +34,22 @@
 		<module>dc-accounting</module>
 		<module>dc-integration</module>
 		<module>dc-tradeapi</module>
+		<module>dc-master</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
-
+           <!-- MongoDb + Spark -->
 			<dependency>
 				<groupId>org.mongodb</groupId>
 				<artifactId>mongo-java-driver</artifactId>
 				<version>${mongodb.driver.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>com.sparkjava</groupId>
+				<artifactId>spark-core</artifactId>
+				<version>${spark.version}</version>
+			</dependency>
+			
 			<!-- OpenGamma -->
 			<dependency>
 				<groupId>com.opengamma.strata</groupId>
@@ -138,6 +148,7 @@
 				<artifactId>jcommander</artifactId>
 				<version>${jcommander.version}</version>
 			</dependency>
+
 			<!-- Testing -->
 			<dependency>
 				<groupId>com.opengamma.strata</groupId>
@@ -186,6 +197,61 @@
 				<version>${mockito.version}</version>
 			</dependency>
 
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-mongodb</artifactId>
+				<version>${spring-boot-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-rest</artifactId>
+
+				<version>${spring-boot-version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-tomcat</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-jetty</artifactId>
+				<version>${spring-boot-version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${spring-version}</version>
+			</dependency>
 		</dependencies>
 
 	</dependencyManagement>
@@ -216,4 +282,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
+
 </project>
