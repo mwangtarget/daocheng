@@ -1,2 +1,0 @@
-Curve Name,Value Type,Day Count,Interpolator,Left Extrapolator,Right Extrapolator
-USD-Disc,Zero,Act/Act ISDA,Linear,Polynomial,Flat

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/daocheng.iml" filepath="$PROJECT_DIR$/.idea/daocheng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-platform/dc-risk/dc-risk.iml" filepath="$PROJECT_DIR$/dc-platform/dc-risk/dc-risk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-platform/dc-root.iml" filepath="$PROJECT_DIR$/dc-platform/dc-root.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-platform/dc-tradeapi/dc-tradeapi.iml" filepath="$PROJECT_DIR$/dc-platform/dc-tradeapi/dc-tradeapi.iml" />
+    </modules>
+  </component>
+</project>

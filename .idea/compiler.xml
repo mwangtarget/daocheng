@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="dc-tradeapi" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dc-accounting" target="1.8" />
+      <module name="dc-integration" target="1.8" />
+      <module name="dc-master" target="1.8" />
+      <module name="dc-risk" target="1.8" />
+      <module name="dc-root" target="1.8" />
+      <module name="dc-tradeapi" target="1.8" />
+      <module name="strata-basics" target="1.8" />
+      <module name="strata-calc" target="1.8" />
+      <module name="strata-collect" target="1.8" />
+      <module name="strata-data" target="1.8" />
+      <module name="strata-loader" target="1.8" />
+      <module name="strata-market" target="1.8" />
+      <module name="strata-math" target="1.8" />
+      <module name="strata-measure" target="1.8" />
+      <module name="strata-pricer" target="1.8" />
+      <module name="strata-product" target="1.8" />
+      <module name="strata-report" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

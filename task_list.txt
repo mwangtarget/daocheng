@@ -1,0 +1,7 @@
+1.  Write daocheng based on grpc and protocal-buffer.
+2.  Building services lookup based on ETCD.
+
+3.  Built concept of circuit breakder. (low priority) 
+4.  Change underlying database to Postgresql (low priority)
+
+5.  The final package should be docker image

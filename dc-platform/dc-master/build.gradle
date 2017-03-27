@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'com.google.protobuf'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        // ASSUMES GRADLE 2.12 OR HIGHER. Use plugin version 0.7.5 with earlier
+        // gradle versions
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.0'
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.0.2"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.2.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+dependencies {
+    compile 'io.grpc:grpc-netty:1.2.0'
+    compile 'io.grpc:grpc-protobuf:1.2.0'
+    compile 'io.grpc:grpc-stub:1.2.0'
+    compile 'org.joda:joda-beans:1.10.1'
+    compile 'com.opengamma.strata:strata-basics:1.2.0'
+    compile 'com.opengamma.strata:strata-product:1.2.0'
+}

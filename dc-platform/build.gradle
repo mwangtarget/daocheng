@@ -1,0 +1,23 @@
+subprojects {
+    apply plugin: 'java'
+
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        compile 'io.grpc:grpc-netty:1.2.0'
+        compile 'io.grpc:grpc-protobuf:1.2.0'
+        compile 'io.grpc:grpc-stub:1.2.0'
+        testCompile 'junit:junit:4.12'
+    }
+
+    version = '1.0'
+
+    jar {
+        manifest.attributes provider: 'gradle'
+    }
+
+}
