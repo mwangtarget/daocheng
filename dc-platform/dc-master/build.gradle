@@ -1,5 +1,6 @@
 apply plugin: 'java'
-apply plugin: 'com.google.protobuf'
+def grpcVersion = '1.2.0'
+def strataVersion = '1.2.0'
 
 buildscript {
     repositories {
@@ -12,13 +13,14 @@ buildscript {
     }
 }
 
+apply plugin: 'com.google.protobuf'
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.0.2"
+        artifact = "com.google.protobuf:protoc:3.2.0"
     }
     plugins {
         grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.2.0'
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
         }
     }
     generateProtoTasks {
@@ -28,11 +30,19 @@ protobuf {
     }
 }
 
+apply plugin: 'idea'
+idea {
+    module {
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/java");
+        sourceDirs += file("${projectDir}/build/generated/source/proto/main/grpc");
+    }
+}
+
 dependencies {
-    compile 'io.grpc:grpc-netty:1.2.0'
-    compile 'io.grpc:grpc-protobuf:1.2.0'
-    compile 'io.grpc:grpc-stub:1.2.0'
+    compile "io.grpc:grpc-netty:${grpcVersion}"
+    compile "io.grpc:grpc-protobuf:${grpcVersion}"
+    compile "io.grpc:grpc-stub:${grpcVersion}"
     compile 'org.joda:joda-beans:1.10.1'
-    compile 'com.opengamma.strata:strata-basics:1.2.0'
-    compile 'com.opengamma.strata:strata-product:1.2.0'
+    compile "com.opengamma.strata:strata-basics:${strataVersion}"
+    compile "com.opengamma.strata:strata-product:${strataVersion}"
 }

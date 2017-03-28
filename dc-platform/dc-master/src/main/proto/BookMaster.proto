@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.daocheng.master.book";
+option java_outer_classname = "BookMaster";
+//option objc_class_prefix = "HLW";
+
+package BookMaster;
+
+
+service BookService {
+    // Sends a greeting
+    rpc getBook (BookID) returns (Book) {}
+}
+
+
+message BookID{
+    string bookID = 1;
+}
+message Book {
+    string name = 1;
+}
