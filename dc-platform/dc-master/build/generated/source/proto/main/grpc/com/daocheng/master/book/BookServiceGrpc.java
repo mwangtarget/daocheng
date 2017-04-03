@@ -24,17 +24,26 @@ public final class BookServiceGrpc {
 
   private BookServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "BookMaster.BookService";
+  public static final String SERVICE_NAME = "BookService";
 
   // Static method descriptors that strictly reflect the proto.
   @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
-  public static final io.grpc.MethodDescriptor<com.daocheng.master.book.BookID,
+  public static final io.grpc.MethodDescriptor<com.daocheng.master.book.GetBookRequest,
       com.daocheng.master.book.Book> METHOD_GET_BOOK =
       io.grpc.MethodDescriptor.create(
           io.grpc.MethodDescriptor.MethodType.UNARY,
           generateFullMethodName(
-              "BookMaster.BookService", "getBook"),
-          io.grpc.protobuf.ProtoUtils.marshaller(com.daocheng.master.book.BookID.getDefaultInstance()),
+              "BookService", "GetBook"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.daocheng.master.book.GetBookRequest.getDefaultInstance()),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.daocheng.master.book.Book.getDefaultInstance()));
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.daocheng.master.book.CreateBookRequest,
+      com.daocheng.master.book.Book> METHOD_CREATE_BOOK =
+      io.grpc.MethodDescriptor.create(
+          io.grpc.MethodDescriptor.MethodType.UNARY,
+          generateFullMethodName(
+              "BookService", "CreateBook"),
+          io.grpc.protobuf.ProtoUtils.marshaller(com.daocheng.master.book.CreateBookRequest.getDefaultInstance()),
           io.grpc.protobuf.ProtoUtils.marshaller(com.daocheng.master.book.Book.getDefaultInstance()));
 
   /**
@@ -66,12 +75,28 @@ public final class BookServiceGrpc {
 
     /**
      * <pre>
-     * Sends a greeting
+     *         option (google.api.http) = {
+     *               get: "/v1/{name=entities/&#42;&#47;desks/&#42;&#47;books/}"
+     *        };
      * </pre>
      */
-    public void getBook(com.daocheng.master.book.BookID request,
+    public void getBook(com.daocheng.master.book.GetBookRequest request,
         io.grpc.stub.StreamObserver<com.daocheng.master.book.Book> responseObserver) {
       asyncUnimplementedUnaryCall(METHOD_GET_BOOK, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *         option (google.api.http) = {
+     *            //TODO: check the syntax !
+     *            post: "/v1/entities/{parent=desks/&#42;}/books"
+     *            body: "book"
+     *        };
+     * </pre>
+     */
+    public void createBook(com.daocheng.master.book.CreateBookRequest request,
+        io.grpc.stub.StreamObserver<com.daocheng.master.book.Book> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_CREATE_BOOK, responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -80,9 +105,16 @@ public final class BookServiceGrpc {
             METHOD_GET_BOOK,
             asyncUnaryCall(
               new MethodHandlers<
-                com.daocheng.master.book.BookID,
+                com.daocheng.master.book.GetBookRequest,
                 com.daocheng.master.book.Book>(
                   this, METHODID_GET_BOOK)))
+          .addMethod(
+            METHOD_CREATE_BOOK,
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.daocheng.master.book.CreateBookRequest,
+                com.daocheng.master.book.Book>(
+                  this, METHODID_CREATE_BOOK)))
           .build();
     }
   }
@@ -107,13 +139,30 @@ public final class BookServiceGrpc {
 
     /**
      * <pre>
-     * Sends a greeting
+     *         option (google.api.http) = {
+     *               get: "/v1/{name=entities/&#42;&#47;desks/&#42;&#47;books/}"
+     *        };
      * </pre>
      */
-    public void getBook(com.daocheng.master.book.BookID request,
+    public void getBook(com.daocheng.master.book.GetBookRequest request,
         io.grpc.stub.StreamObserver<com.daocheng.master.book.Book> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(METHOD_GET_BOOK, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *         option (google.api.http) = {
+     *            //TODO: check the syntax !
+     *            post: "/v1/entities/{parent=desks/&#42;}/books"
+     *            body: "book"
+     *        };
+     * </pre>
+     */
+    public void createBook(com.daocheng.master.book.CreateBookRequest request,
+        io.grpc.stub.StreamObserver<com.daocheng.master.book.Book> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(METHOD_CREATE_BOOK, getCallOptions()), request, responseObserver);
     }
   }
 
@@ -137,12 +186,28 @@ public final class BookServiceGrpc {
 
     /**
      * <pre>
-     * Sends a greeting
+     *         option (google.api.http) = {
+     *               get: "/v1/{name=entities/&#42;&#47;desks/&#42;&#47;books/}"
+     *        };
      * </pre>
      */
-    public com.daocheng.master.book.Book getBook(com.daocheng.master.book.BookID request) {
+    public com.daocheng.master.book.Book getBook(com.daocheng.master.book.GetBookRequest request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GET_BOOK, getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *         option (google.api.http) = {
+     *            //TODO: check the syntax !
+     *            post: "/v1/entities/{parent=desks/&#42;}/books"
+     *            body: "book"
+     *        };
+     * </pre>
+     */
+    public com.daocheng.master.book.Book createBook(com.daocheng.master.book.CreateBookRequest request) {
+      return blockingUnaryCall(
+          getChannel(), METHOD_CREATE_BOOK, getCallOptions(), request);
     }
   }
 
@@ -166,17 +231,35 @@ public final class BookServiceGrpc {
 
     /**
      * <pre>
-     * Sends a greeting
+     *         option (google.api.http) = {
+     *               get: "/v1/{name=entities/&#42;&#47;desks/&#42;&#47;books/}"
+     *        };
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.daocheng.master.book.Book> getBook(
-        com.daocheng.master.book.BookID request) {
+        com.daocheng.master.book.GetBookRequest request) {
       return futureUnaryCall(
           getChannel().newCall(METHOD_GET_BOOK, getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     *         option (google.api.http) = {
+     *            //TODO: check the syntax !
+     *            post: "/v1/entities/{parent=desks/&#42;}/books"
+     *            body: "book"
+     *        };
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.daocheng.master.book.Book> createBook(
+        com.daocheng.master.book.CreateBookRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(METHOD_CREATE_BOOK, getCallOptions()), request);
     }
   }
 
   private static final int METHODID_GET_BOOK = 0;
+  private static final int METHODID_CREATE_BOOK = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -196,7 +279,11 @@ public final class BookServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_BOOK:
-          serviceImpl.getBook((com.daocheng.master.book.BookID) request,
+          serviceImpl.getBook((com.daocheng.master.book.GetBookRequest) request,
+              (io.grpc.stub.StreamObserver<com.daocheng.master.book.Book>) responseObserver);
+          break;
+        case METHODID_CREATE_BOOK:
+          serviceImpl.createBook((com.daocheng.master.book.CreateBookRequest) request,
               (io.grpc.stub.StreamObserver<com.daocheng.master.book.Book>) responseObserver);
           break;
         default:
@@ -233,6 +320,7 @@ public final class BookServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BookServiceDescriptorSupplier())
               .addMethod(METHOD_GET_BOOK)
+              .addMethod(METHOD_CREATE_BOOK)
               .build();
         }
       }

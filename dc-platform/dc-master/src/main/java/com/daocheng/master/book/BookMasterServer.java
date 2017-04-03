@@ -1,28 +1,51 @@
 package com.daocheng.master.book;
 
+import com.ecwid.consul.v1.ConsulClient;
+import com.ecwid.consul.v1.agent.model.NewService;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.logging.Logger;
+import java.util.Collections;
 
-/**
- * Server that manages startup/shutdown of a {@code Greeter} server.
- */
+
 public class BookMasterServer {
-    private static final Logger logger = Logger.getLogger(BookMasterServer.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(BookMasterServer.class.getName());
 
     private Server server;
 
     private void start() throws IOException {
+
     /* The port on which the server should run */
         int port = 50051;
         server = ServerBuilder.forPort(port)
                 .addService(new BookServiceImpl())
                 .build()
                 .start();
+
+
         logger.info("Server started, listening on " + port);
+
+        ConsulClient client = new ConsulClient("localhost");
+
+        NewService newService = new NewService();
+        newService.setId("book_master_1");
+        newService.setTags(Collections.singletonList("static"));
+        newService.setName("book_master");
+        newService.setPort(port);
+
+        NewService.Check serviceCheck = new NewService.Check();
+        serviceCheck.setScript("ping");
+        serviceCheck.setInterval("10s");
+        newService.setCheck(serviceCheck);
+
+        client.agentServiceRegister(newService);
+
+        logger.info("book_master services been registered");
+
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
             public void run() {
@@ -33,6 +56,8 @@ public class BookMasterServer {
             }
         });
     }
+
+
 
     private void stop() {
         if (server != null) {
@@ -61,7 +86,7 @@ public class BookMasterServer {
     static class BookServiceImpl extends BookServiceGrpc.BookServiceImplBase {
 
         @Override
-        public void getBook(BookID req, StreamObserver<Book> responseObserver) {
+        public void getBook(GetBookRequest req, StreamObserver<Book> responseObserver) {
             Book book = Book.newBuilder().setName("GBL_CNY_CN").build();
             responseObserver.onNext(book);
             responseObserver.onCompleted();

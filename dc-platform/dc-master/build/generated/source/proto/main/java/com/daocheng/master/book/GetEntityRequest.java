@@ -4,18 +4,18 @@
 package com.daocheng.master.book;
 
 /**
- * Protobuf type {@code BookMaster.BookID}
+ * Protobuf type {@code GetEntityRequest}
  */
-public  final class BookID extends
+public  final class GetEntityRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:BookMaster.BookID)
-    BookIDOrBuilder {
-  // Use BookID.newBuilder() to construct.
-  private BookID(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // @@protoc_insertion_point(message_implements:GetEntityRequest)
+    GetEntityRequestOrBuilder {
+  // Use GetEntityRequest.newBuilder() to construct.
+  private GetEntityRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private BookID() {
-    bookID_ = "";
+  private GetEntityRequest() {
+    name_ = "";
   }
 
   @java.lang.Override
@@ -23,7 +23,7 @@ public  final class BookID extends
   getUnknownFields() {
     return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
   }
-  private BookID(
+  private GetEntityRequest(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -46,7 +46,7 @@ public  final class BookID extends
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            bookID_ = s;
+            name_ = s;
             break;
           }
         }
@@ -62,44 +62,44 @@ public  final class BookID extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.daocheng.master.book.BookMaster.internal_static_BookMaster_BookID_descriptor;
+    return com.daocheng.master.book.BookMaster.internal_static_GetEntityRequest_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.daocheng.master.book.BookMaster.internal_static_BookMaster_BookID_fieldAccessorTable
+    return com.daocheng.master.book.BookMaster.internal_static_GetEntityRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.daocheng.master.book.BookID.class, com.daocheng.master.book.BookID.Builder.class);
+            com.daocheng.master.book.GetEntityRequest.class, com.daocheng.master.book.GetEntityRequest.Builder.class);
   }
 
-  public static final int BOOKID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object bookID_;
+  public static final int NAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object name_;
   /**
-   * <code>string bookID = 1;</code>
+   * <code>string name = 1;</code>
    */
-  public java.lang.String getBookID() {
-    java.lang.Object ref = bookID_;
+  public java.lang.String getName() {
+    java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      bookID_ = s;
+      name_ = s;
       return s;
     }
   }
   /**
-   * <code>string bookID = 1;</code>
+   * <code>string name = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getBookIDBytes() {
-    java.lang.Object ref = bookID_;
+      getNameBytes() {
+    java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      bookID_ = b;
+      name_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -118,8 +118,8 @@ public  final class BookID extends
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getBookIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, bookID_);
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
     }
   }
 
@@ -128,8 +128,8 @@ public  final class BookID extends
     if (size != -1) return size;
 
     size = 0;
-    if (!getBookIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, bookID_);
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
     }
     memoizedSize = size;
     return size;
@@ -141,14 +141,14 @@ public  final class BookID extends
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.daocheng.master.book.BookID)) {
+    if (!(obj instanceof com.daocheng.master.book.GetEntityRequest)) {
       return super.equals(obj);
     }
-    com.daocheng.master.book.BookID other = (com.daocheng.master.book.BookID) obj;
+    com.daocheng.master.book.GetEntityRequest other = (com.daocheng.master.book.GetEntityRequest) obj;
 
     boolean result = true;
-    result = result && getBookID()
-        .equals(other.getBookID());
+    result = result && getName()
+        .equals(other.getName());
     return result;
   }
 
@@ -159,65 +159,65 @@ public  final class BookID extends
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + BOOKID_FIELD_NUMBER;
-    hash = (53 * hash) + getBookID().hashCode();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.daocheng.master.book.BookID parseFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.daocheng.master.book.BookID parseFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.daocheng.master.book.BookID parseFrom(byte[] data)
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.daocheng.master.book.BookID parseFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.daocheng.master.book.BookID parseFrom(java.io.InputStream input)
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.daocheng.master.book.BookID parseFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.daocheng.master.book.BookID parseDelimitedFrom(java.io.InputStream input)
+  public static com.daocheng.master.book.GetEntityRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.daocheng.master.book.BookID parseDelimitedFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.daocheng.master.book.BookID parseFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.daocheng.master.book.BookID parseFrom(
+  public static com.daocheng.master.book.GetEntityRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -229,7 +229,7 @@ public  final class BookID extends
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.daocheng.master.book.BookID prototype) {
+  public static Builder newBuilder(com.daocheng.master.book.GetEntityRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -244,25 +244,25 @@ public  final class BookID extends
     return builder;
   }
   /**
-   * Protobuf type {@code BookMaster.BookID}
+   * Protobuf type {@code GetEntityRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:BookMaster.BookID)
-      com.daocheng.master.book.BookIDOrBuilder {
+      // @@protoc_insertion_point(builder_implements:GetEntityRequest)
+      com.daocheng.master.book.GetEntityRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.daocheng.master.book.BookMaster.internal_static_BookMaster_BookID_descriptor;
+      return com.daocheng.master.book.BookMaster.internal_static_GetEntityRequest_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.daocheng.master.book.BookMaster.internal_static_BookMaster_BookID_fieldAccessorTable
+      return com.daocheng.master.book.BookMaster.internal_static_GetEntityRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.daocheng.master.book.BookID.class, com.daocheng.master.book.BookID.Builder.class);
+              com.daocheng.master.book.GetEntityRequest.class, com.daocheng.master.book.GetEntityRequest.Builder.class);
     }
 
-    // Construct using com.daocheng.master.book.BookID.newBuilder()
+    // Construct using com.daocheng.master.book.GetEntityRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -279,31 +279,31 @@ public  final class BookID extends
     }
     public Builder clear() {
       super.clear();
-      bookID_ = "";
+      name_ = "";
 
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.daocheng.master.book.BookMaster.internal_static_BookMaster_BookID_descriptor;
+      return com.daocheng.master.book.BookMaster.internal_static_GetEntityRequest_descriptor;
     }
 
-    public com.daocheng.master.book.BookID getDefaultInstanceForType() {
-      return com.daocheng.master.book.BookID.getDefaultInstance();
+    public com.daocheng.master.book.GetEntityRequest getDefaultInstanceForType() {
+      return com.daocheng.master.book.GetEntityRequest.getDefaultInstance();
     }
 
-    public com.daocheng.master.book.BookID build() {
-      com.daocheng.master.book.BookID result = buildPartial();
+    public com.daocheng.master.book.GetEntityRequest build() {
+      com.daocheng.master.book.GetEntityRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public com.daocheng.master.book.BookID buildPartial() {
-      com.daocheng.master.book.BookID result = new com.daocheng.master.book.BookID(this);
-      result.bookID_ = bookID_;
+    public com.daocheng.master.book.GetEntityRequest buildPartial() {
+      com.daocheng.master.book.GetEntityRequest result = new com.daocheng.master.book.GetEntityRequest(this);
+      result.name_ = name_;
       onBuilt();
       return result;
     }
@@ -335,18 +335,18 @@ public  final class BookID extends
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.daocheng.master.book.BookID) {
-        return mergeFrom((com.daocheng.master.book.BookID)other);
+      if (other instanceof com.daocheng.master.book.GetEntityRequest) {
+        return mergeFrom((com.daocheng.master.book.GetEntityRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.daocheng.master.book.BookID other) {
-      if (other == com.daocheng.master.book.BookID.getDefaultInstance()) return this;
-      if (!other.getBookID().isEmpty()) {
-        bookID_ = other.bookID_;
+    public Builder mergeFrom(com.daocheng.master.book.GetEntityRequest other) {
+      if (other == com.daocheng.master.book.GetEntityRequest.getDefaultInstance()) return this;
+      if (!other.getName().isEmpty()) {
+        name_ = other.name_;
         onChanged();
       }
       onChanged();
@@ -361,11 +361,11 @@ public  final class BookID extends
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.daocheng.master.book.BookID parsedMessage = null;
+      com.daocheng.master.book.GetEntityRequest parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.daocheng.master.book.BookID) e.getUnfinishedMessage();
+        parsedMessage = (com.daocheng.master.book.GetEntityRequest) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -375,71 +375,71 @@ public  final class BookID extends
       return this;
     }
 
-    private java.lang.Object bookID_ = "";
+    private java.lang.Object name_ = "";
     /**
-     * <code>string bookID = 1;</code>
+     * <code>string name = 1;</code>
      */
-    public java.lang.String getBookID() {
-      java.lang.Object ref = bookID_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        bookID_ = s;
+        name_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string bookID = 1;</code>
+     * <code>string name = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getBookIDBytes() {
-      java.lang.Object ref = bookID_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        bookID_ = b;
+        name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string bookID = 1;</code>
+     * <code>string name = 1;</code>
      */
-    public Builder setBookID(
+    public Builder setName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      bookID_ = value;
+      name_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string bookID = 1;</code>
+     * <code>string name = 1;</code>
      */
-    public Builder clearBookID() {
+    public Builder clearName() {
       
-      bookID_ = getDefaultInstance().getBookID();
+      name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
-     * <code>string bookID = 1;</code>
+     * <code>string name = 1;</code>
      */
-    public Builder setBookIDBytes(
+    public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      bookID_ = value;
+      name_ = value;
       onChanged();
       return this;
     }
@@ -454,39 +454,39 @@ public  final class BookID extends
     }
 
 
-    // @@protoc_insertion_point(builder_scope:BookMaster.BookID)
+    // @@protoc_insertion_point(builder_scope:GetEntityRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:BookMaster.BookID)
-  private static final com.daocheng.master.book.BookID DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:GetEntityRequest)
+  private static final com.daocheng.master.book.GetEntityRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.daocheng.master.book.BookID();
+    DEFAULT_INSTANCE = new com.daocheng.master.book.GetEntityRequest();
   }
 
-  public static com.daocheng.master.book.BookID getDefaultInstance() {
+  public static com.daocheng.master.book.GetEntityRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<BookID>
-      PARSER = new com.google.protobuf.AbstractParser<BookID>() {
-    public BookID parsePartialFrom(
+  private static final com.google.protobuf.Parser<GetEntityRequest>
+      PARSER = new com.google.protobuf.AbstractParser<GetEntityRequest>() {
+    public GetEntityRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-        return new BookID(input, extensionRegistry);
+        return new GetEntityRequest(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<BookID> parser() {
+  public static com.google.protobuf.Parser<GetEntityRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<BookID> getParserForType() {
+  public com.google.protobuf.Parser<GetEntityRequest> getParserForType() {
     return PARSER;
   }
 
-  public com.daocheng.master.book.BookID getDefaultInstanceForType() {
+  public com.daocheng.master.book.GetEntityRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

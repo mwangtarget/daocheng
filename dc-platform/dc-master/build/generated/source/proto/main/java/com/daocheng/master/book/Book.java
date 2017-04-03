@@ -4,11 +4,11 @@
 package com.daocheng.master.book;
 
 /**
- * Protobuf type {@code BookMaster.Book}
+ * Protobuf type {@code Book}
  */
 public  final class Book extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:BookMaster.Book)
+    // @@protoc_insertion_point(message_implements:Book)
     BookOrBuilder {
   // Use Book.newBuilder() to construct.
   private Book(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -62,12 +62,12 @@ public  final class Book extends
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.daocheng.master.book.BookMaster.internal_static_BookMaster_Book_descriptor;
+    return com.daocheng.master.book.BookMaster.internal_static_Book_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.daocheng.master.book.BookMaster.internal_static_BookMaster_Book_fieldAccessorTable
+    return com.daocheng.master.book.BookMaster.internal_static_Book_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             com.daocheng.master.book.Book.class, com.daocheng.master.book.Book.Builder.class);
   }
@@ -244,20 +244,20 @@ public  final class Book extends
     return builder;
   }
   /**
-   * Protobuf type {@code BookMaster.Book}
+   * Protobuf type {@code Book}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:BookMaster.Book)
+      // @@protoc_insertion_point(builder_implements:Book)
       com.daocheng.master.book.BookOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.daocheng.master.book.BookMaster.internal_static_BookMaster_Book_descriptor;
+      return com.daocheng.master.book.BookMaster.internal_static_Book_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.daocheng.master.book.BookMaster.internal_static_BookMaster_Book_fieldAccessorTable
+      return com.daocheng.master.book.BookMaster.internal_static_Book_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.daocheng.master.book.Book.class, com.daocheng.master.book.Book.Builder.class);
     }
@@ -286,7 +286,7 @@ public  final class Book extends
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.daocheng.master.book.BookMaster.internal_static_BookMaster_Book_descriptor;
+      return com.daocheng.master.book.BookMaster.internal_static_Book_descriptor;
     }
 
     public com.daocheng.master.book.Book getDefaultInstanceForType() {
@@ -454,10 +454,10 @@ public  final class Book extends
     }
 
 
-    // @@protoc_insertion_point(builder_scope:BookMaster.Book)
+    // @@protoc_insertion_point(builder_scope:Book)
   }
 
-  // @@protoc_insertion_point(class_scope:BookMaster.Book)
+  // @@protoc_insertion_point(class_scope:Book)
   private static final com.daocheng.master.book.Book DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new com.daocheng.master.book.Book();

@@ -3,20 +3,90 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "com.daocheng.master.book";
 option java_outer_classname = "BookMaster";
-//option objc_class_prefix = "HLW";
-
-package BookMaster;
 
 
 service BookService {
-    // Sends a greeting
-    rpc getBook (BookID) returns (Book) {}
+     rpc GetBook(GetBookRequest) returns (Book) {
+//         option (google.api.http) = {
+//               get: "/v1/{name=entities/*/desks/*/books/}"
+//        };
+     };
+     rpc CreateBook(CreateBookRequest) returns (Book) {
+//         option (google.api.http) = {
+//            //TODO: check the syntax !
+//            post: "/v1/entities/{parent=desks/*}/books"
+//            body: "book"
+//        };
+     };
 }
 
-
-message BookID{
-    string bookID = 1;
-}
 message Book {
     string name = 1;
 }
+
+message GetBookRequest {
+    string name = 1;
+}
+
+message CreateBookRequest {
+    string parent = 1;
+    // The Book resource to be created. Client must not set the `Book.name` field.
+    Book book = 2;
+}
+
+
+service DeskService {
+    rpc GetDesk(GetDeskRequest) returns (Desk) {
+//        option (google.api.http) = {
+//             get: "/v1/{name=entities/*/desks/*}"
+//        };
+    };
+    rpc CreateDesk(CreateDeskRequest) returns (Desk) {
+//        option (google.api.http) = {
+//            post: "/v1/{parent=entities/*}/desks"
+//            body: "desk"
+//        };
+    };
+}
+
+message Desk {
+    string name = 1;
+}
+
+message GetDeskRequest {
+    string name = 1;
+}
+
+message CreateDeskRequest {
+    // For example: "entities/desk".
+    string parent = 1;
+    Desk desk = 2;
+}
+
+service EntityService {
+    rpc GetEntity(GetEntityRequest) returns (Entity) {
+//        option (google.api.http) = {
+//              get: "/v1/{name=entities/*}"
+//        };
+    };
+    rpc CreateEntity(CreateEntityRequest) returns (Entity) {
+//        option (google.api.http) = {
+//            post: "/v1/entities"
+//            body: "entity"
+//        };
+    };
+}
+message Entity {
+    string name = 1;
+}
+
+message GetEntityRequest {
+    string name = 1;
+}
+
+message CreateEntityRequest {
+
+    Entity entity = 1;
+}
+
+

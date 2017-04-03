@@ -15,15 +15,50 @@ public final class BookMaster {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_BookMaster_BookID_descriptor;
+    internal_static_Book_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_BookMaster_BookID_fieldAccessorTable;
+      internal_static_Book_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_BookMaster_Book_descriptor;
+    internal_static_GetBookRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_BookMaster_Book_fieldAccessorTable;
+      internal_static_GetBookRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CreateBookRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CreateBookRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Desk_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Desk_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetDeskRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetDeskRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CreateDeskRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CreateDeskRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Entity_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Entity_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetEntityRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetEntityRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_CreateEntityRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_CreateEntityRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,11 +68,24 @@ public final class BookMaster {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020BookMaster.proto\022\nBookMaster\"\030\n\006BookID" +
-      "\022\016\n\006bookID\030\001 \001(\t\"\024\n\004Book\022\014\n\004name\030\001 \001(\t2@" +
-      "\n\013BookService\0221\n\007getBook\022\022.BookMaster.Bo" +
-      "okID\032\020.BookMaster.Book\"\000B(\n\030com.daocheng" +
-      ".master.bookB\nBookMasterP\001b\006proto3"
+      "\n\020BookMaster.proto\"\024\n\004Book\022\014\n\004name\030\001 \001(\t" +
+      "\"\036\n\016GetBookRequest\022\014\n\004name\030\001 \001(\t\"8\n\021Crea" +
+      "teBookRequest\022\016\n\006parent\030\001 \001(\t\022\023\n\004book\030\002 " +
+      "\001(\0132\005.Book\"\024\n\004Desk\022\014\n\004name\030\001 \001(\t\"\036\n\016GetD" +
+      "eskRequest\022\014\n\004name\030\001 \001(\t\"8\n\021CreateDeskRe" +
+      "quest\022\016\n\006parent\030\001 \001(\t\022\023\n\004desk\030\002 \001(\0132\005.De" +
+      "sk\"\026\n\006Entity\022\014\n\004name\030\001 \001(\t\" \n\020GetEntityR" +
+      "equest\022\014\n\004name\030\001 \001(\t\".\n\023CreateEntityRequ" +
+      "est\022\027\n\006entity\030\001 \001(\0132\007.Entity2]\n\013BookServ" +
+      "ice\022#\n\007GetBook\022\017.GetBookRequest\032\005.Book\"\000",
+      "\022)\n\nCreateBook\022\022.CreateBookRequest\032\005.Boo" +
+      "k\"\0002]\n\013DeskService\022#\n\007GetDesk\022\017.GetDeskR" +
+      "equest\032\005.Desk\"\000\022)\n\nCreateDesk\022\022.CreateDe" +
+      "skRequest\032\005.Desk\"\0002k\n\rEntityService\022)\n\tG" +
+      "etEntity\022\021.GetEntityRequest\032\007.Entity\"\000\022/" +
+      "\n\014CreateEntity\022\024.CreateEntityRequest\032\007.E" +
+      "ntity\"\000B(\n\030com.daocheng.master.bookB\nBoo" +
+      "kMasterP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -51,18 +99,60 @@ public final class BookMaster {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_BookMaster_BookID_descriptor =
+    internal_static_Book_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_BookMaster_BookID_fieldAccessorTable = new
+    internal_static_Book_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_BookMaster_BookID_descriptor,
-        new java.lang.String[] { "BookID", });
-    internal_static_BookMaster_Book_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_BookMaster_Book_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_BookMaster_Book_descriptor,
+        internal_static_Book_descriptor,
         new java.lang.String[] { "Name", });
+    internal_static_GetBookRequest_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_GetBookRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetBookRequest_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_CreateBookRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_CreateBookRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CreateBookRequest_descriptor,
+        new java.lang.String[] { "Parent", "Book", });
+    internal_static_Desk_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_Desk_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Desk_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_GetDeskRequest_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_GetDeskRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetDeskRequest_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_CreateDeskRequest_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_CreateDeskRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CreateDeskRequest_descriptor,
+        new java.lang.String[] { "Parent", "Desk", });
+    internal_static_Entity_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_Entity_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Entity_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_GetEntityRequest_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_GetEntityRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetEntityRequest_descriptor,
+        new java.lang.String[] { "Name", });
+    internal_static_CreateEntityRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_CreateEntityRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_CreateEntityRequest_descriptor,
+        new java.lang.String[] { "Entity", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

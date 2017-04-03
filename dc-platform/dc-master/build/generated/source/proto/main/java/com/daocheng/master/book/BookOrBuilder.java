@@ -4,7 +4,7 @@
 package com.daocheng.master.book;
 
 public interface BookOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:BookMaster.Book)
+    // @@protoc_insertion_point(interface_extends:Book)
     com.google.protobuf.MessageOrBuilder {
 
   /**

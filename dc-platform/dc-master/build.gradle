@@ -42,7 +42,9 @@ dependencies {
     compile "io.grpc:grpc-netty:${grpcVersion}"
     compile "io.grpc:grpc-protobuf:${grpcVersion}"
     compile "io.grpc:grpc-stub:${grpcVersion}"
-    compile 'org.joda:joda-beans:1.10.1'
+    compile "org.joda:joda-beans:1.10.1"
+    compile "com.ecwid.consul:consul-api:1.2.1"
+    compile "ch.qos.logback:logback-classic:1.2.2"
     compile "com.opengamma.strata:strata-basics:${strataVersion}"
     compile "com.opengamma.strata:strata-product:${strataVersion}"
 }

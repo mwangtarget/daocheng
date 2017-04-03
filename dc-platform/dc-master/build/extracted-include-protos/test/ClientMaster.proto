@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.daocheng.master.client";
+option java_outer_classname = "ClientMaster";
+
+
+service ClientService {
+    rpc GetClient(GetClientRequest) returns (Client) {
+        //         option (google.api.http) = {
+        //               get: "/v1/{name=entities/*/desks/*/books/}"
+        //        };
+    };
+    rpc CreateClient(CreateClientRequest) returns (Client) {
+        //         option (google.api.http) = {
+        //            //TODO: check the syntax !
+        //            post: "/v1/entities/{parent=desks/*}/books"
+        //            body: "book"
+        //        };
+    };
+}
+
+message Client {
+    string name = 1;
+}
+
+message GetClientRequest {
+    string name = 1;
+}
+
+message CreateClientRequest {
+    string parent = 1;
+    // The Book resource to be created. Client must not set the `Book.name` field.
+    Client client = 2;
+}
+
